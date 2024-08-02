@@ -1,0 +1,13 @@
+{
+	"manifest_version": 2,
+	"name": "Download URL",
+	"description": "Download an url",
+	"version": "1.0",
+	"permissions": [
+		"downloads"
+	],
+	 "browser_action": {
+		"default_title": "Download URL",
+		"default_popup": "download.html"
+	}
+}

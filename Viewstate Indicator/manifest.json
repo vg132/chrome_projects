@@ -1,0 +1,28 @@
+{
+	"name" : "Viewstate indicator",
+	"version" : "2.0",
+	"description" : "Shows the amount of viewstate on the page",
+	"background_page" : "background.html",
+	"permissions": ["tabs"],
+	"page_action" :
+	{
+		"default_icon" : "75px-Button_Icon_Green.png",
+		"default_popup" : "popup.html"
+	},
+	"content_scripts" :
+	[
+		{
+			"matches" :
+			[
+				"http://*/*",
+				"https://*/*"
+			],
+			"js" :
+			[
+				"contentscript.js"
+			],
+			"run_at" : "document_idle",
+			"all_frames" : false
+		}
+	]
+}

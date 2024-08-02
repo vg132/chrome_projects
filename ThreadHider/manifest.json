@@ -1,0 +1,16 @@
+{
+	"manifest_version": 2,
+	"name": "Autosport Thread Hider",
+	"description": "This extension hides unwanted thread in the Autosport Forum, http://forums.autosport.com/.",
+	"version": "1.1",
+	"background": {
+		"scripts": ["background.js"]
+	},
+	"permissions": [
+		"tabs", "contextMenus", "storage", "http://forums.autosport.com/*", "https://forums.autosport.com/*"
+	],
+	"page_action": {
+		"default_popup": "popup.html",
+		"default_title": "Autosport Thread Hider"
+	}
+}

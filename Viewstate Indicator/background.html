@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script>
+			var _viewState=new Array();
+      function onRequest(request, sender, sendResponse) {
+				_viewState[sender.tab.id]=request.viewState;
+
+      	chrome.pageAction.show(sender.tab.id);
+      	chrome.pageAction.setTitle({ tabId: sender.tab.id, title: request.title });
+
+      	if(request.viewStateSize>20000)
+      	{
+      		chrome.pageAction.setIcon({ tabId: sender.tab.id, path: '75px-Button_Icon_Red.png'});
+      	}
+      	else if(request.viewStateSize>10000)
+      	{
+      		chrome.pageAction.setIcon({ tabId: sender.tab.id, path: '75px-Button_Icon_Orange.png'});
+      	}
+      	else
+      	{
+      		chrome.pageAction.setIcon({ tabId: sender.tab.id, path: '75px-Button_Icon_Green.png'});
+      	}
+        sendResponse({});
+      };
+
+      function getViewState(tabId) {
+      	return _viewState[tabId];
+      }
+
+      // Listen for the content script to send a message to the background page.
+      chrome.extension.onRequest.addListener(onRequest);
+    </script>
+  </head>
+</html>

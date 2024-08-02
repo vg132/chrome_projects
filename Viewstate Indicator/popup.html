@@ -1,0 +1,21 @@
+The viewstate for this page is <span id="ViewStateSize"></span> bytes.<br />
+Decoded viewstate:
+<hr />
+<div id="DecodedViewStateTest"></div>
+<hr />
+<div id="DecodedViewState" style="display:none"></div>
+<script type="text/javascript" src="base64.js"></script>
+<script>
+	var page=chrome.extension.getBackgroundPage();
+	chrome.tabs.getSelected(null, function (tab) {
+		var viewStateData = page.getViewState(tab.id);
+		var decodedData = window.atob(viewStateData);
+		processData(decodedData);
+		document.getElementById('DecodedViewState').innerHTML = decodedData;
+		document.getElementById('ViewStateSize').innerHTML = viewStateData.length;
+	});
+
+	function processData(viewState) {
+		document.getElementById('DecodedViewStateTest').innerHTML = viewState;
+	}
+</script>
